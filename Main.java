@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String args[]) {
@@ -10,10 +11,15 @@ public class Main {
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
 
-        window.pack();
-
-        window.setLocationRelativeTo(null);
+        window.pack(); // Sizes the window to fit the GamePanel
+        window.setLocationRelativeTo(null); // Centers the window on the screen
         window.setVisible(true);
+        // Delay before requesting focus, if necessary
+        SwingUtilities.invokeLater(() -> gamePanel.requestFocusInWindow());
+
+
+        // Request focus after the window is visible
+        gamePanel.requestFocusInWindow(); // Ensures that the panel is focused to capture key events
 
         gamePanel.startGameThread();
     }
