@@ -1,8 +1,13 @@
+package src.main;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
-    boolean upPressed = false, downPressed = false, leftPressed = false, rightPressed = false;
+    public boolean upPressed = false;
+    public boolean downPressed = false;
+    public boolean leftPressed = false;
+    public boolean rightPressed = false;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -47,9 +52,5 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_D) {
             rightPressed = false;
         }
-
-        // Debugging output
-        System.out.println("Key Released: " + KeyEvent.getKeyText(code));
-        System.out.println("Key state after release - upPressed: " + upPressed + ", downPressed: " + downPressed + ", leftPressed: " + leftPressed + ", rightPressed: " + rightPressed);
     }
 }

@@ -1,3 +1,5 @@
+package src.main;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
