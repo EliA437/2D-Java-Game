@@ -3,12 +3,13 @@ package src.tile;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
 import src.main.GamePanel;
 
-public class TileManager {
+public class TileManager extends Tile{
     GamePanel gp;
     Tile[] tile;
 
@@ -19,6 +20,8 @@ public class TileManager {
         getTileImage();
     }
 
+    // import tile images
+    
     public void getTileImage() {
 
         try {
@@ -40,11 +43,59 @@ public class TileManager {
 
     }
 
+    public void updateTile() {
+        tileCounter++;
+            if (tileCounter > 30) { // change this to make faster or slower
+                if (tileNumber == 1) {
+                    tileNumber = 2;
+                } else if (tileNumber == 2) {
+                    tileNumber = 1;
+                }
+                tileCounter = 0;
+            }
+    }
+
     public void draw(Graphics g2) {
-        g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(tile[1].image, 0, 100, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(tile[2].image, 100, 0, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(tile[3].image, 0, 200, gp.tileSize, gp.tileSize, null);
+
+        Random random = new Random();
+        
+        
+        // draw grass background
+        for(int j = 0; j < 768; j += 48) {
+            
+            // used to create tile animation
+            for(int i = 0; i < 673; i += 48) {
+
+                if(j == 0 || i == 0 || j == 720 || i == 529) {
+                    g2.drawImage(tile[1].image, j, i, gp.tileSize, gp.tileSize, null);
+                }
+                
+                else if(j == 48 && i == 48) {
+
+                    if(tileNumber == 1) {
+                        g2.drawImage(tile[1].image, j, i, gp.tileSize, gp.tileSize, null);
+                        System.out.println("grass");
+                    } if(tileNumber == 2) {
+                        g2.drawImage(tile[2].image, j, i, gp.tileSize, gp.tileSize, null);
+                        System.out.println("stone");
+                    }
+                }
+
+                else {
+                    
+                        g2.drawImage(tile[0].image, j, i, gp.tileSize, gp.tileSize, null);
+            
+                }
+            
+            }
+          
+        }
+        
+        
+        /*g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[1].image, 0, 48, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[2].image, 48, 0, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[3].image, 0, 48, gp.tileSize, gp.tileSize, null);*/
 
     }
 }

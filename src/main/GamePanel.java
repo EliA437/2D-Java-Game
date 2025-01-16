@@ -65,7 +65,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     @Override
     public void run() {
-        double drawInterval = 1000000000 / fps; // 0.01666666 seconds
+        double drawInterval = 1000000000 / fps; // 0.01666666 seconds 1000000000
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
@@ -81,6 +81,7 @@ public class GamePanel extends JPanel implements Runnable{
 
             if(delta >= 1) {
                 update();
+                tileM.updateTile();
                 repaint();
                 delta--;
                 drawCount++;
