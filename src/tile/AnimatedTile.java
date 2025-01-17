@@ -1,7 +1,6 @@
 package src.tile;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.io.IOException;
 import java.util.Random;
 
@@ -9,15 +8,28 @@ import javax.imageio.ImageIO;
 
 import src.main.GamePanel;
 
-public class TileManager{
+public class AnimatedTile extends Tile {
+
     GamePanel gp;
     Tile[] tile;
 
-    public TileManager(GamePanel gp) {
+    public AnimatedTile(GamePanel gp) {
         this.gp = gp;
         tile = new Tile[10];
 
         getTileImage();
+    }
+
+    public void updateTile() {
+        tileCounter++;
+            if (tileCounter > 30) { // change this to make faster or slower
+                if (tileNumber == 1) {
+                    tileNumber = 2;
+                } else if (tileNumber == 2) {
+                    tileNumber = 1;
+                }
+                tileCounter = 0;
+            }
     }
 
     // import tile images
@@ -43,12 +55,22 @@ public class TileManager{
 
     }
 
-    
 
     public void draw(Graphics g2) {
+            
+        if(tileNumber == 1) {
+            g2.drawImage(tile[1].image, 48, 48, gp.tileSize, gp.tileSize, null);
+            
+        } if(tileNumber == 2) {
+            g2.drawImage(tile[2].image, 48, 48, gp.tileSize, gp.tileSize, null);
+            
+        }
+        
+        
         /*g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
         g2.drawImage(tile[1].image, 0, 48, gp.tileSize, gp.tileSize, null);
         g2.drawImage(tile[2].image, 48, 0, gp.tileSize, gp.tileSize, null);
         g2.drawImage(tile[3].image, 0, 48, gp.tileSize, gp.tileSize, null);*/
+
     }
 }

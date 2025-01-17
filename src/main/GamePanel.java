@@ -12,6 +12,7 @@ import java.awt.image.ImageObserver;
 import javax.swing.JPanel;
 
 import src.entity.Player;
+import src.tile.AnimatedTile;
 import src.tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -28,7 +29,7 @@ public class GamePanel extends JPanel implements Runnable{
     // FPS
     int fps = 60;
 
-    TileManager tileM = new TileManager(this);
+    AnimatedTile animatedTile = new AnimatedTile(this);
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     Player player = new Player(this,keyH);
@@ -81,7 +82,7 @@ public class GamePanel extends JPanel implements Runnable{
 
             if(delta >= 1) {
                 update();
-                tileM.updateTile();
+                animatedTile.updateTile();
                 repaint();
                 delta--;
                 drawCount++;
@@ -106,7 +107,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics g2 = (Graphics2D) g;
-        tileM.draw(g2);
+        animatedTile.draw(g2);
         player.draw(g2);
         g2.dispose();
         
