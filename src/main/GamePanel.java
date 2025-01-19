@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable{
     int fps = 60;
 
     AnimatedTile animatedTile = new AnimatedTile(this);
+    TileManager tile = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     Player player = new Player(this,keyH);
@@ -108,6 +109,7 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics g2 = (Graphics2D) g;
         animatedTile.draw(g2);
+        tile.draw(g2);
         player.draw(g2);
         g2.dispose();
         
