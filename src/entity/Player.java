@@ -21,9 +21,9 @@ public class Player extends Entity {
             setDefaultValues();
             getPlayerImage();
     }
-    public void setDefaultValues() {
-        x = 100;
-        y = 100;
+    public void setDefaultValues() { // default player spawn position
+        x = 360;
+        y = 312;
         speed = 4;
         direction = "down";
     }

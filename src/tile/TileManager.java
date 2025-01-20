@@ -2,7 +2,11 @@ package src.tile;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -12,12 +16,14 @@ import src.main.GamePanel;
 public class TileManager{
     GamePanel gp;
     Tile[] tile;
+    int mapTileNum[][];
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
         tile = new Tile[10];
-
+        mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
         getTileImage();
+        loadMap("/src/res/maps/tilemap.txt" );
     }
 
     // import tile images
@@ -43,12 +49,68 @@ public class TileManager{
 
     }
 
+
+    // loads the text file for map into a 2D array
+    public void loadMap(String filePath) {
+
+        try {
+            InputStream is = getClass().getResourceAsStream(filePath);
+            if (is == null) { // Check if the file was found
+                throw new FileNotFoundException("Error: tilemap.txt not found!");
+            }
+    
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            int col = 0;
+            int row = 0;
+    
+            while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
+                String line = br.readLine();
+                while (col < gp.maxScreenCol) {
+                    String[] numbers = line.split(" "); // split by spaces
+
+                    if (numbers.length < gp.maxScreenCol) {
+                        throw new IllegalArgumentException(
+                            "Error: Insufficient numbers in line. Expected: " + gp.maxScreenCol + ", Found: " + numbers.length);
+                    }
+
+                    int num = Integer.parseInt(numbers[col]); // converts string into an integer
+                    mapTileNum[col][row] = num; // store in map array
+                    col++;
+                }
+                col = 0;
+                row++;
+            }
+            br.close();
+        } catch (FileNotFoundException e) {
+            System.err.println(e.getMessage()); // Print specific error message for missing file
+        } catch (Exception e) {
+            e.printStackTrace(); // Print stack trace for other errors
+        }
+    }
+    
     
 
     public void draw(Graphics g2) {
-        g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(tile[1].image, 0, 48, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(tile[2].image, 48, 0, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(tile[3].image, 0, 48, gp.tileSize, gp.tileSize, null);
+
+        int col = 0;
+        int row = 0;
+        int x = 0;
+        int y = 0;
+
+        while(row < gp.maxScreenRow) {
+
+            int tileNum = mapTileNum[col][row]; // extract tile numeber from 2D array
+            g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null); // draw image based on tile num
+            col++;
+            x += gp.tileSize;
+
+            if(col == gp.maxScreenCol) {
+                col = 0;
+                x = 0;
+                row++;
+                y += gp.tileSize;
+            }
+        }
+        
     }
 }

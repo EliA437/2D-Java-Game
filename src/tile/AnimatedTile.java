@@ -20,6 +20,7 @@ public class AnimatedTile extends Tile {
         getTileImage();
     }
 
+    // swapps the image back and forth, that is being loaded into the tile
     public void updateTile() {
         tileCounter++;
             if (tileCounter > 30) { // change this to make faster or slower
