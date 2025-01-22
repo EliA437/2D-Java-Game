@@ -31,10 +31,10 @@ public class AnimatedTile extends Tile {
             }
     }
 
-    // import tile images
+    // import tile images (WORK IN PROGRESS)
     
     public void getTileImage() {
-
+        /* 
         try {
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/flower_1.png")); // flower_1
@@ -46,9 +46,9 @@ public class AnimatedTile extends Tile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        */
     }
-
+    
 
     public void draw(Graphics g2) {
             

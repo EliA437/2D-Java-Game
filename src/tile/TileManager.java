@@ -23,8 +23,9 @@ public class TileManager{
         loadMap("/src/res/maps/tilemap.txt" );
     }
 
-    // import tile images
     
+    // load images here
+
     public void getTileImage() {
 
         try {
@@ -40,6 +41,9 @@ public class TileManager{
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_4.png")); // grass_4: 3
 
+            tile[4] = new Tile();
+            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/naturals/bush_1.png")); // bush_1: 4
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,6 +52,7 @@ public class TileManager{
 
 
     // loads the text file for map into a 2D array
+
     public void loadMap(String filePath) {
 
         try {
@@ -85,7 +90,7 @@ public class TileManager{
         }
     }
     
-    
+    // iterates through 2D array and draws it
 
     public void draw(Graphics g2) {
 
