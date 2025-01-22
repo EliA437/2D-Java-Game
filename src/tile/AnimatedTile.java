@@ -2,8 +2,6 @@ package src.tile;
 
 import java.awt.Graphics;
 import java.io.IOException;
-import java.util.Random;
-
 import javax.imageio.ImageIO;
 
 import src.main.GamePanel;

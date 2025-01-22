@@ -1,14 +1,11 @@
 package src.tile;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Random;
-
 import javax.imageio.ImageIO;
 
 import src.main.GamePanel;
@@ -32,16 +29,16 @@ public class TileManager{
 
         try {
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass.png")); // grass 0
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_1.png")); // grass_1: 0
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/wall.png")); // wall 1
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_2.png")); // grass_2: 1
 
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/earth.png")); // earth 2
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_3.png")); // grass_3: 2
 
             tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/tree.png")); // tree 3
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_4.png")); // grass_4: 3
 
         } catch (IOException e) {
             e.printStackTrace();

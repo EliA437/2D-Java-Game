@@ -1,8 +1,6 @@
 package src.entity;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -30,22 +28,47 @@ public class Player extends Entity {
 
     public void getPlayerImage() {
         try {
-            // Load each image using FileInputStream and absolute file paths
-            up1 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/boy_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/boy_down_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/boy_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/boy_left_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/boy_right_2.png"));
+
+            // Walking down
+            down1 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_down/down_1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_down/down_2.png"));
+            down3 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_down/down_3.png"));
+            down4 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_down/down_4.png"));
+            down5 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_down/down_5.png"));
+            down6 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_down/down_6.png"));
+
+            // walking up
+            up1 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_up/up_1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_up/up_2.png"));
+            up3 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_up/up_3.png"));
+            up4 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_up/up_4.png"));
+            up5 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_up/up_5.png"));
+            up6 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_up/up_6.png"));
+
+            
+            // walking right
+            right1 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_right/right_1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_right/right_2.png"));
+            right3 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_right/right_3.png"));
+            right4 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_right/right_4.png"));
+            right5 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_right/right_5.png"));
+            right6 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_right/right_6.png"));
+            right7 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_right/right_7.png"));
+
+            // walking left
+            left1 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_left/left_1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_left/left_2.png"));
+            left3 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_left/left_3.png"));
+            left4 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_left/left_4.png"));
+            left5 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_left/left_5.png"));
+            left6 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_left/left_6.png"));
+            left7 = ImageIO.read(getClass().getResourceAsStream("/src/res/player/new_player/walking_left/left_7.png"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     
-    
-
     public void update() { // called 60 times per second
         if (keyH.upPressed == true || keyH.downPressed == true 
         || keyH.rightPressed == true || keyH.leftPressed == true) {
@@ -77,10 +100,9 @@ public class Player extends Entity {
         
             // Used to create walking animation
             spriteCounter++;
-            if (spriteCounter > 5) { // change this to make faster or slower
-                if (spriteNumber == 1) {
-                    spriteNumber = 2;
-                } else if (spriteNumber == 2) {
+            if (spriteCounter > 5) { // Change this to make it faster or slower
+                spriteNumber++;
+                if (spriteNumber > 7) { // Cycle back to 1 after 7
                     spriteNumber = 1;
                 }
                 spriteCounter = 0;
@@ -94,12 +116,24 @@ public class Player extends Entity {
         
         switch(direction) {
             case "up":
-                if(spriteNumber == 1) {
+                if (spriteNumber == 1) {
                     image = up1;
                 }
-                if(spriteNumber == 2) {
+                if (spriteNumber == 2) {
                     image = up2;
-                } 
+                }
+                if (spriteNumber == 3) {
+                    image = up3;
+                }
+                if (spriteNumber == 4) {
+                    image = up4;
+                }
+                if (spriteNumber == 5) {
+                    image = up5;
+                }
+                if (spriteNumber >= 6) {
+                    image = up6;
+                }
                 break;
             case "down":
                 if(spriteNumber == 1) {
@@ -108,13 +142,40 @@ public class Player extends Entity {
                 if(spriteNumber == 2) {
                     image = down2;
                 }
+                if(spriteNumber == 3) {
+                    image = down3; 
+                }
+                if(spriteNumber == 4) {
+                    image = down4;
+                }
+                if(spriteNumber == 5) {
+                    image = down5; 
+                }
+                if(spriteNumber >= 6) {
+                    image = down6;
+                }
                 break;
             case "left":
-                if(spriteNumber == 1) {
+                if (spriteNumber == 1) {
                     image = left1;
                 }
-                if(spriteNumber == 2) {
+                if (spriteNumber == 2) {
                     image = left2;
+                }
+                if (spriteNumber == 3) {
+                    image = left3;
+                }
+                if (spriteNumber == 4) {
+                    image = left4;
+                }
+                if (spriteNumber == 5) {
+                    image = left5;
+                }
+                if (spriteNumber == 6) {
+                    image = left6;
+                }
+                if (spriteNumber == 7) {
+                    image = left7;
                 }
                 break;
             case "right":
@@ -123,6 +184,21 @@ public class Player extends Entity {
                 }
                 if(spriteNumber == 2) {
                     image = right2;
+                }
+                if(spriteNumber == 3) {
+                    image = right3; 
+                }
+                if(spriteNumber == 4) {
+                    image = right4;
+                }
+                if(spriteNumber == 5) {
+                    image = right5; 
+                }
+                if(spriteNumber == 6) {
+                    image = right6;
+                }
+                if(spriteNumber == 7) {
+                    image = right7; 
                 }
                 break;
             default:

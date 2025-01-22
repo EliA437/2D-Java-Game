@@ -7,8 +7,6 @@ import java.awt.Graphics2D;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.image.ImageObserver;
-
 import javax.swing.JPanel;
 
 import src.entity.Player;
@@ -109,7 +107,7 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics g2 = (Graphics2D) g;
         tile.draw(g2);
-        animatedTile.draw(g2);
+        //animatedTile.draw(g2);
         player.draw(g2);
         g2.dispose();
         
