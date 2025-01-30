@@ -89,6 +89,8 @@ public class TileManager{
             e.printStackTrace(); // Print stack trace for other errors
         }
     }
+
+    
     
     // iterates through 2D array and draws it
 

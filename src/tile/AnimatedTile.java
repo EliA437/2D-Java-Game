@@ -34,19 +34,19 @@ public class AnimatedTile extends Tile {
     // import tile images (WORK IN PROGRESS)
     
     public void getTileImage() {
-        /* 
+        
         try {
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/flower_1.png")); // flower_1
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/naturals/bush_1.png")); // flower_1
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/flower_2.png")); // flower_2 
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_2.png")); // flower_2 
 
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
+        
     }
     
 

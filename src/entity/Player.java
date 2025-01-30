@@ -12,16 +12,22 @@ public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
 
+    public final int screenX;
+    public final int screenY;
+
     public Player(GamePanel gp,  KeyHandler keyH) {
             this.gp = gp;
             this.keyH = keyH;
+            screenX = gp.screenWidth/2;
+            screenY = gp.screenHeight/2;
 
             setDefaultValues();
             getPlayerImage();
     }
+    
     public void setDefaultValues() { // default player spawn position
-        x = 360;
-        y = 312;
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 23;
         speed = 4;
         direction = "down";
     }
@@ -75,27 +81,23 @@ public class Player extends Entity {
 
             if (keyH.upPressed == true) {
                 direction = "up";
-                y -= speed;
+                worldY -= speed;
         
-                System.out.println("Up pressed: playerY = " + x + " " + y);
             }
             if (keyH.downPressed == true) {
                 direction = "down";
-                y += speed;
+                worldY += speed;
         
-                System.out.println("Down pressed: playerY = " + x + " " + y);
             }
             if (keyH.rightPressed == true) {
                 direction = "right";
-                x += speed;
+                worldX += speed;
         
-                System.out.println("Right pressed: playerX = " + x + " " + y);
             }
             if (keyH.leftPressed == true) {
                 direction = "left";
-                x -= speed;
+                worldX -= speed;
         
-                System.out.println("Left pressed: playerX = " + x + " " + y);
             }
         
             // Used to create walking animation
@@ -207,6 +209,6 @@ public class Player extends Entity {
         }
         
         // Draw the image at the player's position
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, gp); 
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, gp); 
     }
 }
