@@ -18,7 +18,7 @@ public class TileManager{
     public TileManager(GamePanel gp) {
         this.gp = gp;
         tile = new Tile[10];
-        mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
+        mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
         loadMap("/src/res/maps/tilemap.txt" );
     }
@@ -65,14 +65,14 @@ public class TileManager{
             int col = 0;
             int row = 0;
     
-            while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
+            while (col < gp.maxWorldCol && row < gp.maxWorldRow) {
                 String line = br.readLine();
-                while (col < gp.maxScreenCol) {
+                while (col < gp.maxWorldCol) {
                     String[] numbers = line.split(" "); // split by spaces
 
-                    if (numbers.length < gp.maxScreenCol) {
+                    if (numbers.length < gp.maxWorldCol) {
                         throw new IllegalArgumentException(
-                            "Error: Insufficient numbers in line. Expected: " + gp.maxScreenCol + ", Found: " + numbers.length);
+                            "Error: Insufficient numbers in line. Expected: " + gp.maxWorldCol + ", Found: " + numbers.length);
                     }
 
                     int num = Integer.parseInt(numbers[col]); // converts string into an integer
