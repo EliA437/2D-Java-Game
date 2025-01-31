@@ -16,7 +16,6 @@ public class KeyHandler implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("Key pressed event received"); // Add this to check if the method is being triggered
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_W) {
             upPressed = true;
@@ -31,12 +30,8 @@ public class KeyHandler implements KeyListener {
             rightPressed = true;
         }
     
-        // Debugging output
-        System.out.println("Key Pressed: " + KeyEvent.getKeyText(code));
-        System.out.println("Key state - upPressed: " + upPressed + ", downPressed: " + downPressed + ", leftPressed: " + leftPressed + ", rightPressed: " + rightPressed);
     }
     
-
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();

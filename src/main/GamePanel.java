@@ -37,31 +37,16 @@ public class GamePanel extends JPanel implements Runnable{
     TileManager tile = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
-    Player player = new Player(this,keyH);
+    public Player player = new Player(this,keyH);
 
     // CONSTRUCTOR
     public GamePanel() {
-        System.out.println("Panel focused: " + this.hasFocus()); // Initial focus check
         this.requestFocus();
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true); // Improve rendering performance
         this.addKeyListener(keyH);
-        this.setFocusable(true);
-
-        // Add FocusListener to debug focus issues
-        this.addFocusListener((FocusListener) new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                System.out.println("GamePanel has focus.");
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                System.out.println("GamePanel lost focus.");
-            }
-        });
-        
+        this.setFocusable(true);   
     }
     
     public void startGameThread() {
@@ -110,7 +95,7 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics g2 = (Graphics2D) g;
         tile.draw(g2);
-        animatedTile.draw(g2);
+        //animatedTile.draw(g2);
         player.draw(g2);
         g2.dispose();
         
