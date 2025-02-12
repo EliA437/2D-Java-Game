@@ -29,20 +29,15 @@ public class TileManager {
 
         try {
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_1.png")); // grass_1:
-                                                                                                              // 0
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_1.png")); // grass_1:  // 0
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_2.png")); // grass_2:
-                                                                                                              // 1
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_2.png")); // grass_2:  // 1
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_3.png")); // grass_3:
-                                                                                                              // 2
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_3.png")); // grass_3:  // 2
             tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_4.png")); // grass_4:
-                                                                                                              // 3
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_4.png")); // grass_4:  // 3
             tile[4] = new Tile();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/naturals/bush_1.png")); // bush_1:
-                                                                                                                // 4
+            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/naturals/bush_1.png")); // bush_1: // 4
 
         } catch (IOException e) {
             e.printStackTrace();

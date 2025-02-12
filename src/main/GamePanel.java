@@ -39,6 +39,9 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     public Player player = new Player(this,keyH);
 
+    // Sound
+    Sound sound = new Sound();
+
     // CONSTRUCTOR
     public GamePanel() {
         this.requestFocus();
@@ -99,6 +102,16 @@ public class GamePanel extends JPanel implements Runnable{
         player.draw(g2);
         g2.dispose();
         
+    }
+
+    public void playMusic(int i) {
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public void stopMusic() {
+        sound.stop();
     }
 
 }

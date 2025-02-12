@@ -17,5 +17,6 @@ public class Main {
         window.setVisible(true);
         SwingUtilities.invokeLater(() -> gamePanel.requestFocusInWindow());  // Ensures the game panel gets focus, allowing it to capture key events (keyboard inputs)
         gamePanel.startGameThread(); // Start the game loop in GamePanel (likely a separate thread for updating the game)
+        gamePanel.playMusic(0);
     }
 }
