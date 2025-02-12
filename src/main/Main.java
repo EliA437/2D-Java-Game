@@ -7,6 +7,9 @@ public class Main {
     public static void main(String args[]) { 
 
         JFrame window = new JFrame(); 
+        FileWriter fileWriter = new FileWriter();
+        fileWriter.writeFile();
+        
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("2D Java Game");
