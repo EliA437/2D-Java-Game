@@ -16,13 +16,13 @@ import src.tile.TileManager;
 public class GamePanel extends JPanel implements Runnable{
      
     // SCREEN SETTINGS
-    final int originalTileSize = 16; // 16x16 tile
-    final int scale = 3;
-    public final int tileSize = originalTileSize * scale; // 48x48 tile
-    public final int maxScreenCol = 16; 
-    public final int maxScreenRow = 14; 
-    public final int screenWidth = tileSize * maxScreenCol; // 768 pixels
-    public final int screenHeight = tileSize * maxScreenRow; // 576 pixels
+    final static int originalTileSize = 16; // 16x16 tile
+    final static int scale = 3;
+    public final static int tileSize = originalTileSize * scale; // 48x48 tile
+    public final static int maxScreenCol = 16; 
+    public final static int maxScreenRow = 14; 
+    public final static int screenWidth = tileSize * maxScreenCol; // 768 pixels
+    public final static int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
     // WORLD SETTINGS
     public final int maxWorldCol = 50;
@@ -104,14 +104,6 @@ public class GamePanel extends JPanel implements Runnable{
         
     }
 
-    public void playMusic(int i) {
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
-    }
-
-    public void stopMusic() {
-        sound.stop();
-    }
+    
 
 }
