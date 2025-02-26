@@ -24,7 +24,7 @@ public class MenuPanel extends JPanel {
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true); // Improve rendering performance
         this.addKeyListener(keyH);
-        playMusic(0);
+        playMusic(1);   // play title card music
         
         JButton startButton = new JButton("Start Game");
         startButton.setBounds(GamePanel.screenWidth / 2 - 100, GamePanel.screenHeight / 2, 200, 50); // Centered

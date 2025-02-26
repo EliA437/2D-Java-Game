@@ -11,7 +11,9 @@ public class Sound {
     URL soundURL[] = new URL[30];
 
     public Sound() {
-        soundURL[0] = getClass().getResource("/src/res/sound/your_face.wav"); // title card song
+        soundURL[0] = getClass().getResource("/src/res/sound/your_face.wav"); 
+        soundURL[1] = getClass().getResource("/src/res/sound/pretty_poison_loading_music.wav"); // title card song
+        soundURL[2] = getClass().getResource("/src/res/sound/gameplaymusic_1.wav"); // first soundtrack song
     }
 
     public void setFile(int i) {

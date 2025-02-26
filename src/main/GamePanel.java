@@ -4,9 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import javax.swing.JPanel;
 
 import src.entity.Player;
@@ -49,7 +46,8 @@ public class GamePanel extends JPanel implements Runnable{
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true); // Improve rendering performance
         this.addKeyListener(keyH);
-        this.setFocusable(true);   
+        this.setFocusable(true);  
+        this.playMusic(2); // play gamplay music 1 
     }
     
     public void startGameThread() {
@@ -104,6 +102,13 @@ public class GamePanel extends JPanel implements Runnable{
         
     }
 
-    
+    public void playMusic(int i) {
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
 
+    public void stopMusic() {
+        sound.stop();
+    }
 }
