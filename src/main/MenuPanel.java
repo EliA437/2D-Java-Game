@@ -3,13 +3,9 @@ package src.main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -24,14 +20,13 @@ public class MenuPanel extends JPanel {
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true); // Improve rendering performance
         this.addKeyListener(keyH);
-        playMusic(1);   // play title card music
+        this.setFocusable(true);
         
         JButton startButton = new JButton("Start Game");
-        startButton.setBounds(GamePanel.screenWidth / 2 - 100, GamePanel.screenHeight / 2, 200, 50); // Centered
+        startButton.setBounds(GamePanel.screenWidth / 2, 150, 200, 50); // Centered
         
         // Add an action listener to handle button clicks
         startButton.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Here, you can switch to the GamePanel
@@ -41,7 +36,16 @@ public class MenuPanel extends JPanel {
         });
 
         this.add(startButton); // Add button to panel
-        this.setFocusable(true);
+        playMusic(1);   // Play title card music after adding the button
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        g.setColor(Color.WHITE); 
+        g.setFont(new Font("Arial", Font.BOLD, 30));
+        g.drawString("2D Java Game", GamePanel.screenWidth / 2, 150); // Draw text at (x, y)
     }
 
     public void playMusic(int i) {
