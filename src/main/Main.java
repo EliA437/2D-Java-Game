@@ -8,6 +8,10 @@ public class Main {
     static JFrame window;
     public static void main(String args[]) { 
 
+        FileWriter fileWriter = new FileWriter();
+        fileWriter.writeFile(); 
+        fileWriter.writeRandomFile();  
+
         window = new JFrame(); 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
@@ -34,8 +38,7 @@ public class Main {
         gamePanel.startGameThread(); // Start the game loop in GamePanel (likely a separate thread for updating the game)
     }
 
-    //FileWriter fileWriter = new FileWriter();         figure this out later
-    //fileWriter.writeFile();   
+    
 }
 
 
