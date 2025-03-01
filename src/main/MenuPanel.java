@@ -1,12 +1,13 @@
 package src.main;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MenuPanel extends JPanel {
@@ -15,37 +16,49 @@ public class MenuPanel extends JPanel {
     Sound sound = new Sound();
 
     public MenuPanel() {
+
         this.requestFocus();
-        this.setPreferredSize(new Dimension(GamePanel.screenWidth, GamePanel.screenHeight));
+        
+        // add background gif
+        JLabel backgroundLabel = new JLabel();
+        try {
+            ImageIcon backgroundGif= new ImageIcon(getClass().getResource("/src/res/misc/background_gif.gif"));
+            backgroundLabel.setIcon(backgroundGif);
+            backgroundLabel.setBounds(0, 0, backgroundGif.getIconWidth(), backgroundGif.getIconHeight());
+            this.setPreferredSize(new Dimension(backgroundGif.getIconWidth(), backgroundGif.getIconHeight()));
+            this.add(backgroundLabel);
+        } catch(Exception e) {
+            System.out.println("Error loading background GIF: " + e.getMessage());
+        }
+
         this.setBackground(Color.BLACK);
-        this.setDoubleBuffered(true); // Improve rendering performance
+        this.setDoubleBuffered(true); 
         this.addKeyListener(keyH);
         this.setFocusable(true);
-        
+
         JButton startButton = new JButton("Start Game");
         startButton.setBounds(GamePanel.screenWidth / 2, 150, 200, 50); // Centered
         
-        // Add an action listener to handle button clicks
+        // add action listener to handle button clicks
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Here, you can switch to the GamePanel
+                
                 stopMusic();
                 Main.startGame();
             }
         });
 
-        this.add(startButton); // Add button to panel
-        playMusic(1);   // Play title card music after adding the button
+        this.add(startButton);
+        playMusic(1);   // play title card music
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         g.setColor(Color.WHITE); 
         g.setFont(new Font("Arial", Font.BOLD, 30));
-        g.drawString("2D Java Game", GamePanel.screenWidth / 2, 150); // Draw text at (x, y)
+        g.drawString("sunday", GamePanel.screenWidth / 2, GamePanel.screenHeight / 2); 
     }
 
     public void playMusic(int i) {
