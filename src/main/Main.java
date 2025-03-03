@@ -11,17 +11,19 @@ public class Main {
         FileWriter fileWriter = new FileWriter();
         fileWriter.writeFile(); 
         fileWriter.writeRandomFile();  
+        KeyHandler keyHandler = new KeyHandler();
 
         // setup JFrame
         window = new JFrame(); 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        //window.setUndecorated(true);
+        window.setUndecorated(true);
         MenuPanel menuPanel = new MenuPanel();
         window.add(menuPanel);
         window.pack(); // makes window fit preffered size of GamePanel
         window.setLocationRelativeTo(null); // center the window on the screen
         window.setVisible(true);
+        window.addKeyListener(keyHandler);
     }
 
     public static void startGame() {
@@ -41,7 +43,6 @@ public class Main {
     public static void exitGame() {
         window.dispose();
     }
-
 }
 
 

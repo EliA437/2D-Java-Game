@@ -49,11 +49,11 @@ public class MenuPanel extends JPanel {
         startButton.setContentAreaFilled(false);
         startButton.setBorderPainted(true);
         startButton.setForeground(Color.WHITE);
-        startButton.setFont(new Font("Arial", Font.BOLD, 20));
+        startButton.setFont(new Font("Arial", Font.BOLD, 40)); // button font settings
         startButton.setForeground(new Color(1,50,150)); // set start button to the blue from the title
         startButton.setBorderPainted(false); // removes the border
         startButton.setBorder(new LineBorder(new Color(1,50,113), 3));
-
+        startButton.setFocusable(false);
 
         // setup exit button
         JButton exitButton = new JButton("Exit Game");
@@ -62,17 +62,18 @@ public class MenuPanel extends JPanel {
         exitButton.setContentAreaFilled(false);
         exitButton.setBorderPainted(true);
         exitButton.setForeground(Color.WHITE);
-        exitButton.setFont(new Font("Arial", Font.BOLD, 20));
+        exitButton.setFont(new Font("Arial", Font.BOLD, 30)); // button font settings
         exitButton.setForeground(new Color(1,50,150)); // set exit button to the blue from the title
         exitButton.setBorderPainted(false);
         exitButton.setBorder(new LineBorder(new Color(1,50,113), 3));
+        exitButton.setFocusable(false);
 
         // add hover events for mouse entering buttons
         startButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 startButton.setForeground(new Color(4, 50, 200)); 
-                startButton.setBorderPainted(true);
+                //startButton.setBorderPainted(true);
             }
         
             @Override
@@ -87,7 +88,7 @@ public class MenuPanel extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 exitButton.setForeground(new Color(4, 50, 200)); 
-                exitButton.setBorderPainted(true);
+                //exitButton.setBorderPainted(true);
             }
         
             @Override
