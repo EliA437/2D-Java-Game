@@ -1,5 +1,7 @@
 package src.main;
 
+import java.awt.event.WindowEvent;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -12,11 +14,11 @@ public class Main {
         fileWriter.writeFile(); 
         fileWriter.writeRandomFile();  
 
+        // setup JFrame
         window = new JFrame(); 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("2D Java Game");
-
+        //window.setUndecorated(true);
         MenuPanel menuPanel = new MenuPanel();
         window.add(menuPanel);
         window.pack(); // makes window fit preffered size of GamePanel
@@ -36,6 +38,10 @@ public class Main {
 
         SwingUtilities.invokeLater(() -> gamePanel.requestFocusInWindow());  // Ensures the game panel gets focus, allowing it to capture key events (keyboard inputs)
         gamePanel.startGameThread(); // Start the game loop in GamePanel (likely a separate thread for updating the game)
+    }
+
+    public static void exitGame() {
+        window.dispose();
     }
 
     
