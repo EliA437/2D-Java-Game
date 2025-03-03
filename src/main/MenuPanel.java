@@ -52,7 +52,7 @@ public class MenuPanel extends JPanel {
         startButton.setFont(new Font("Arial", Font.BOLD, 20));
         startButton.setForeground(new Color(1,50,150)); // set start button to the blue from the title
         startButton.setBorderPainted(false); // removes the border
-        startButton.setBorder(new LineBorder(new Color(1,50,250), 3));
+        startButton.setBorder(new LineBorder(new Color(1,50,113), 3));
 
 
         // setup exit button
@@ -65,7 +65,7 @@ public class MenuPanel extends JPanel {
         exitButton.setFont(new Font("Arial", Font.BOLD, 20));
         exitButton.setForeground(new Color(1,50,150)); // set exit button to the blue from the title
         exitButton.setBorderPainted(false);
-        exitButton.setBorder(new LineBorder(new Color(1,50,250), 3));
+        exitButton.setBorder(new LineBorder(new Color(1,50,113), 3));
 
         // add hover events for mouse entering buttons
         startButton.addMouseListener(new MouseAdapter() {

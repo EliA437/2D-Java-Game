@@ -1,7 +1,5 @@
 package src.main;
 
-import java.awt.event.WindowEvent;
-
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -44,7 +42,6 @@ public class Main {
         window.dispose();
     }
 
-    
 }
 
 

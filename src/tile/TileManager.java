@@ -29,9 +29,9 @@ public class TileManager {
 
         try {
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_1.png")); // grass_1:  // 0
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/base_grass.png")); // base_grass:  // 0
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_2.png")); // grass_2:  // 1
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/base_grass.png")); // grass_2:  // 1 // change later to a different grass variabt
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/src/res/tiles/grass/grass_3.png")); // grass_3:  // 2
             tile[3] = new Tile();
