@@ -1,33 +1,29 @@
 package src.main;
 import java.awt.Color;
 import java.awt.Dimension;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import src.buttons.ExitButton;
 import src.buttons.StartButton;
 
+public class GameMenu extends JPanel {
 
-public class MenuPanel extends JPanel {
+    final int background_width = GamePanel.screenWidth;
+    final int background_height = GamePanel.screenHeight;
+    
 
     KeyHandler keyH = new KeyHandler();
     Sound sound = new Sound();
 
-    public MenuPanel() {
+    public GameMenu() {
 
         this.setLayout(null);
         
         // setup background gif
         JLabel backgroundLabel = new JLabel();
-        ImageIcon backgroundGif;
 
-        backgroundGif = new ImageIcon(getClass().getResource("/src/res/ui/background_gif3.gif"));
-        backgroundLabel.setIcon(backgroundGif);
-        backgroundLabel.setBounds(0, 0, backgroundGif.getIconWidth(), backgroundGif.getIconHeight());
-
-        final int background_width = backgroundGif.getIconWidth();
-        final int background_height = backgroundGif.getIconHeight();
+        backgroundLabel.setBounds(0, 0, background_width, background_height);
 
         // setup button holder
         JLabel buttonHolder = new JLabel();
@@ -38,7 +34,7 @@ public class MenuPanel extends JPanel {
         //System.out.println("height " + buttonHolder.getHeight());
         
         // setup start button
-        StartButton startButton = new StartButton("Start Game", "1,50,150", false, 50, 410, 253, 50);
+        StartButton startButton = new StartButton("Resume Game", "1,50,150", false, 50, 410, 253, 50);
         // setup exit button
         ExitButton exitButton = new ExitButton("Exit Game", "1,50,150", false, 50, 500, 253, 50);
 

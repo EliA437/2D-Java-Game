@@ -47,7 +47,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true); // Improve rendering performance
         this.addKeyListener(keyH);
         this.setFocusable(true);  
-        this.playMusic(2); // play gamplay music 1 
+        this.playMusic(2); // play gameplay music 1 
     }
     
     public void startGameThread() {

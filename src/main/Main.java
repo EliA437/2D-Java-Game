@@ -40,8 +40,22 @@ public class Main {
         gamePanel.startGameThread(); // Start the game loop in GamePanel (likely a separate thread for updating the game)
     }
 
+    public static void opengGameMenu() {
+
+        window.getContentPane().removeAll();
+
+        GameMenu gameMenu = new GameMenu();
+        window.add(gameMenu);
+        window.pack();
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+
+        SwingUtilities.invokeLater(() -> gameMenu.requestFocusInWindow());  // Ensures the game panel gets focus, allowing it to capture key events (keyboard inputs)
+    }
+
     public static void exitGame() {
         window.dispose();
+        System.exit(0);
     }
 }
 
