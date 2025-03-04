@@ -9,12 +9,12 @@ import src.buttons.ExitButton;
 import src.buttons.StartButton;
 
 
-public class MenuPanel extends JPanel {
+public class MainMenu extends JPanel {
 
     KeyHandler keyH = new KeyHandler();
     Sound sound = new Sound();
 
-    public MenuPanel() {
+    public MainMenu() {
 
         this.setLayout(null);
         
@@ -22,12 +22,17 @@ public class MenuPanel extends JPanel {
         JLabel backgroundLabel = new JLabel();
         ImageIcon backgroundGif;
 
-        backgroundGif = new ImageIcon(getClass().getResource("/src/res/ui/background_gif3.gif"));
+        backgroundGif = new ImageIcon(getClass().getResource("/src/res/ui/bkgif.gif"));
         backgroundLabel.setIcon(backgroundGif);
         backgroundLabel.setBounds(0, 0, backgroundGif.getIconWidth(), backgroundGif.getIconHeight());
 
         final int background_width = backgroundGif.getIconWidth();
         final int background_height = backgroundGif.getIconHeight();
+        System.out.println("gif_width "+background_width);
+        System.out.println("gif_height "+background_width);
+
+        System.out.println("frame_width "+ GamePanel.screenWidth);
+        System.out.println("frame_height " + GamePanel.screenHeight);
 
         // setup button holder
         JLabel buttonHolder = new JLabel();

@@ -12,7 +12,6 @@ public class GameMenu extends JPanel {
     final int background_width = GamePanel.screenWidth;
     final int background_height = GamePanel.screenHeight;
     
-
     KeyHandler keyH = new KeyHandler();
     Sound sound = new Sound();
 
@@ -34,7 +33,7 @@ public class GameMenu extends JPanel {
         //System.out.println("height " + buttonHolder.getHeight());
         
         // setup start button
-        StartButton startButton = new StartButton("Resume Game", "1,50,150", false, 50, 410, 253, 50);
+        StartButton startButton = new StartButton("Resume", "1,50,150", false, 50, 410, 253, 50);
         // setup exit button
         ExitButton exitButton = new ExitButton("Exit Game", "1,50,150", false, 50, 500, 253, 50);
 

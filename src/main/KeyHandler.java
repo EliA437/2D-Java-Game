@@ -31,7 +31,7 @@ public class KeyHandler implements KeyListener {
             rightPressed = true;
         }
         if(code == KeyEvent.VK_ESCAPE) {
-            Main.opengGameMenu();
+            Main.openGameMenu();
         }
     
     }

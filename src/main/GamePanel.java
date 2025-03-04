@@ -39,6 +39,9 @@ public class GamePanel extends JPanel implements Runnable{
     // Sound
     Sound sound = new Sound();
 
+    // Flags
+    private boolean running = false;
+
     // CONSTRUCTOR
     public GamePanel() {
         this.requestFocus();
@@ -51,8 +54,24 @@ public class GamePanel extends JPanel implements Runnable{
     }
     
     public void startGameThread() {
+        if(running) {
+            return; // prevent multiple game threads from starting
+        }
+        running = true;
         gameThread = new Thread(this);
         gameThread.start();
+    }
+
+    public void stopGameThread() {
+        running = false;
+        if(gameThread != null) {
+            try {
+                gameThread.join();
+            } catch(InterruptedException e) {
+                e.printStackTrace();
+            }
+            gameThread = null;
+        }
     }
 
     @Override

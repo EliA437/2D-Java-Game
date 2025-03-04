@@ -1,56 +1,62 @@
 package src.main;
 
+import java.awt.CardLayout;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class Main {    
 
     static JFrame window;
+    static CardLayout cardLayout;
+    static JPanel mainPanel;
+    static GamePanel gamePanel;
+    static GameMenu gameMenu;
+
     public static void main(String args[]) { 
 
-        FileWriter fileWriter = new FileWriter();
-        fileWriter.writeFile(); 
-        fileWriter.writeRandomFile();  
         KeyHandler keyHandler = new KeyHandler();
 
         // setup JFrame
-        window = new JFrame(); 
+        window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setUndecorated(true);
-        MenuPanel menuPanel = new MenuPanel();
-        window.add(menuPanel);
-        window.pack(); // makes window fit preffered size of GamePanel
-        window.setLocationRelativeTo(null); // center the window on the screen
-        window.setVisible(true);
         window.addKeyListener(keyHandler);
+
+        // setup CardLayout
+        cardLayout = new CardLayout();
+        mainPanel = new JPanel(cardLayout);
+        window.setContentPane(mainPanel);
+
+        // create panels 
+        MainMenu mainMenu = new MainMenu();
+        gamePanel = new GamePanel();
+        gameMenu = new GameMenu();
+
+        // add panels to CardLayout
+        mainPanel.add(mainMenu, "Menu");
+        mainPanel.add(gamePanel, "Game");
+        mainPanel.add(gameMenu, "GameMenu");
+
+        // Show menu first
+        cardLayout.show(mainPanel, "Menu");
+
+        window.pack(); 
+        window.setSize(GamePanel.screenWidth, GamePanel.screenHeight);
+        window.setLocationRelativeTo(null); 
+        window.setVisible(true);
     }
 
     public static void startGame() {
-
-        window.getContentPane().removeAll(); // remove menu panel
-
-        GamePanel gamePanel = new GamePanel();
-        window.add(gamePanel);
-        window.pack(); 
-        window.setLocationRelativeTo(null); 
-        window.setVisible(true);
-
-        SwingUtilities.invokeLater(() -> gamePanel.requestFocusInWindow());  // Ensures the game panel gets focus, allowing it to capture key events (keyboard inputs)
-        gamePanel.startGameThread(); // Start the game loop in GamePanel (likely a separate thread for updating the game)
+        cardLayout.show(mainPanel, "Game");
+        SwingUtilities.invokeLater(() -> gamePanel.requestFocusInWindow());  
+        gamePanel.startGameThread(); 
     }
 
-    public static void opengGameMenu() {
-
-        window.getContentPane().removeAll();
-
-        GameMenu gameMenu = new GameMenu();
-        window.add(gameMenu);
-        window.pack();
-        window.setLocationRelativeTo(null);
-        window.setVisible(true);
-
-        SwingUtilities.invokeLater(() -> gameMenu.requestFocusInWindow());  // Ensures the game panel gets focus, allowing it to capture key events (keyboard inputs)
+    public static void openGameMenu() {
+        cardLayout.show(mainPanel, "GameMenu");
+        SwingUtilities.invokeLater(() -> gameMenu.requestFocusInWindow());
     }
 
     public static void exitGame() {
@@ -58,5 +64,3 @@ public class Main {
         System.exit(0);
     }
 }
-
-

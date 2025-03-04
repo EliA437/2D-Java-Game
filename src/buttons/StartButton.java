@@ -30,7 +30,7 @@ public class StartButton extends JButton {
         this.setOpaque(!transparency);
         this.setContentAreaFilled(false);
         this.setBorderPainted(true);
-        this.setFont(new Font("Arial", Font.BOLD, 30)); // button font settings
+        this.setFont(new Font("Arial", Font.BOLD, 40)); // button font settings
         this.setForeground(color); // set exit button to the blue from the title
         this.setBorderPainted(false);
         this.setBorder(new LineBorder(new Color(1,50,113), 3));
