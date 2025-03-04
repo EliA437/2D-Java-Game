@@ -38,7 +38,7 @@ public class ExitButton extends JButton {
         this.setFocusable(false);
 
 
-        // add events for mouse leaving buttons
+        // events for mouse hovering over the exit button
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -53,7 +53,7 @@ public class ExitButton extends JButton {
             }
         });
 
-        
+        // events for mouse clicking on exit button
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

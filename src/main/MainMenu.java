@@ -28,11 +28,6 @@ public class MainMenu extends JPanel {
 
         final int background_width = backgroundGif.getIconWidth();
         final int background_height = backgroundGif.getIconHeight();
-        System.out.println("gif_width "+background_width);
-        System.out.println("gif_height "+background_width);
-
-        System.out.println("frame_width "+ GamePanel.screenWidth);
-        System.out.println("frame_height " + GamePanel.screenHeight);
 
         // setup button holder
         JLabel buttonHolder = new JLabel();

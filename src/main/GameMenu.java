@@ -18,10 +18,8 @@ public class GameMenu extends JPanel {
     public GameMenu() {
 
         this.setLayout(null);
-        
-        // setup background gif
+   
         JLabel backgroundLabel = new JLabel();
-
         backgroundLabel.setBounds(0, 0, background_width, background_height);
 
         // setup button holder
@@ -29,8 +27,6 @@ public class GameMenu extends JPanel {
         buttonHolder.setBounds(background_width / 4, 0, background_width / 2, background_height);
         buttonHolder.setOpaque(false); // determines if its visible
         buttonHolder.setBackground(Color.BLUE);
-        //System.out.println("width " + buttonHolder.getWidth());
-        //System.out.println("height " + buttonHolder.getHeight());
         
         // setup start button
         StartButton startButton = new StartButton("Resume", "1,50,150", false, 50, 410, 253, 50);
@@ -49,7 +45,7 @@ public class GameMenu extends JPanel {
         
         // setup menu panel
         this.setPreferredSize(new Dimension(background_width, background_height)); 
-        this.setBackground(Color.BLACK); 
+        this.setBackground(Color.BLACK); // set background color of the game menu
         this.setDoubleBuffered(true);
         this.setComponentZOrder(buttonHolder, 0);   // force correct Z-order: move `buttonHolder` above `backgroundLabel`
         this.setFocusable(true);
