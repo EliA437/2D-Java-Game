@@ -3,9 +3,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import src.buttons.ResumeButton;
 import src.buttons.ExitButton;
-import src.buttons.StartButton;
 
 public class GameMenu extends JPanel {
 
@@ -13,7 +12,6 @@ public class GameMenu extends JPanel {
     final int background_height = GamePanel.screenHeight;
     
     KeyHandler keyH = new KeyHandler();
-    Sound sound = new Sound();
 
     public GameMenu() {
 
@@ -29,12 +27,12 @@ public class GameMenu extends JPanel {
         buttonHolder.setBackground(Color.BLUE);
         
         // setup start button
-        StartButton startButton = new StartButton("Resume", "1,50,150", false, 50, 410, 253, 50);
+        ResumeButton resumeButton = new ResumeButton("Resume", "1,50,150", false, 50, 410, 253, 50);
         // setup exit button
         ExitButton exitButton = new ExitButton("Exit Game", "1,50,150", false, 50, 500, 253, 50);
 
         // add start button to button holder
-        buttonHolder.add(startButton);
+        buttonHolder.add(resumeButton);
         // add exit button to button holder
         buttonHolder.add(exitButton);
         
@@ -50,16 +48,5 @@ public class GameMenu extends JPanel {
         this.setComponentZOrder(buttonHolder, 0);   // force correct Z-order: move `buttonHolder` above `backgroundLabel`
         this.setFocusable(true);
 
-        playMusic(1);   // play title card music
-    }
-
-    public void playMusic(int i) {
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
-    }
-
-    public void stopMusic() {
-        sound.stop();
     }
 }

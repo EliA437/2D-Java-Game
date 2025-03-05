@@ -12,20 +12,25 @@ public class Sound {
 
     public Sound() {
         soundURL[0] = getClass().getResource("/src/res/sound/your_face.wav"); 
-        soundURL[1] = getClass().getResource("/src/res/sound/pretty_poison_loading_music.wav"); // title card song
-        soundURL[2] = getClass().getResource("/src/res/sound/gameplaymusic_1.wav"); // first soundtrack song
+        soundURL[1] = getClass().getResource("/src/res/sound/pretty_poison_loading_music.wav"); // menu music
+        soundURL[2] = getClass().getResource("/src/res/sound/gameplaymusic_1.wav"); // first soundtrack
     }
 
     public void setFile(int i) {
+        if (clip != null && clip.isOpen()) {
+            clip.stop();
+            clip.flush();
+            clip.close();
+        }
         try {   
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
         } catch(Exception e) {
-
+            e.printStackTrace();
         }
     }
-
+    
     public void play() {
         clip.start();
     }
@@ -36,5 +41,7 @@ public class Sound {
 
     public void stop() {
         clip.stop();
+        clip.flush();
+        clip.close();
     }
 }

@@ -36,11 +36,10 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     public Player player = new Player(this,keyH);
 
-    // Sound
-    Sound sound = new Sound();
-
     // Flags
     private boolean running = false;
+
+    public static Sound music = new Sound();
 
     // CONSTRUCTOR
     public GamePanel() {
@@ -50,7 +49,6 @@ public class GamePanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true); // Improve rendering performance
         this.addKeyListener(keyH);
         this.setFocusable(true);  
-        this.playMusic(2); // play gameplay music 1 
     }
     
     public void startGameThread() {
@@ -121,13 +119,13 @@ public class GamePanel extends JPanel implements Runnable{
         
     }
 
-    public void playMusic(int i) {
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
+    public void playGameMusic() {
+        music.setFile(2);
+        music.play();
+        music.loop();
     }
 
-    public void stopMusic() {
-        sound.stop();
+    public void stopGameMusic() {
+        music.stop();
     }
 }

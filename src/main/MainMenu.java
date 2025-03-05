@@ -12,11 +12,16 @@ import src.buttons.StartButton;
 public class MainMenu extends JPanel {
 
     KeyHandler keyH = new KeyHandler();
-    Sound sound = new Sound();
+    public static Sound music = new Sound();
 
     public MainMenu() {
 
         this.setLayout(null);
+
+        // start music
+        music.setFile(1);
+        music.play();
+        music.loop();
         
         // setup background gif
         JLabel backgroundLabel = new JLabel();
@@ -59,16 +64,17 @@ public class MainMenu extends JPanel {
         this.setComponentZOrder(buttonHolder, 0);   // force correct Z-order: move `buttonHolder` above `backgroundLabel`
         this.setFocusable(true);
 
-        playMusic(1);   // play title card music
+
     }
 
-    public void playMusic(int i) {
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
+    public void playMenuMusic() {
+        music.setFile(1);
+        music.play();
+        music.loop();
     }
 
-    public void stopMusic() {
-        sound.stop();
+    public void stopMenuMusic() {
+        music.stop();
     }
+  
 }
