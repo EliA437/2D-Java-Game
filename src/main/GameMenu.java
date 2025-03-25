@@ -29,7 +29,7 @@ public class GameMenu extends JPanel {
         // setup start button
         ResumeButton resumeButton = new ResumeButton("Resume", "1,50,150", false, 50, 410, 253, 50);
         // setup exit button
-        ExitButton exitButton = new ExitButton("Exit Game", "1,50,150", false, 50, 500, 253, 50);
+        ExitButton exitButton = new ExitButton("Exit", "1,50,150", false, 50, 500, 253, 50);
 
         // add start button to button holder
         buttonHolder.add(resumeButton);
@@ -47,6 +47,5 @@ public class GameMenu extends JPanel {
         this.setDoubleBuffered(true);
         this.setComponentZOrder(buttonHolder, 0);   // force correct Z-order: move `buttonHolder` above `backgroundLabel`
         this.setFocusable(true);
-
     }
 }

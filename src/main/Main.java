@@ -1,21 +1,23 @@
 package src.main;
-
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import src.extras.MapFileWriter;
 
 public class Main {    
 
     static JFrame window;
     static CardLayout cardLayout;
     static JPanel mainPanel;
-    static GamePanel gamePanel = new GamePanel();;
+    static GamePanel gamePanel = new GamePanel();
     static GameMenu gameMenu = new GameMenu();
     static MainMenu mainMenu = new MainMenu();
     static boolean musicStarted = false;
-    
     public static void main(String args[]) { 
+    
+        MapFileWriter fileWriter = new MapFileWriter();
+        fileWriter.writeRandomFile();
 
         KeyHandler keyHandler = new KeyHandler();
 

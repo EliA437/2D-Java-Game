@@ -20,7 +20,8 @@ public class TileManager {
         tile = new Tile[10];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        loadMap("/src/res/maps/tilemap.txt");
+        loadMap("/src/res/maps/tilemap.txt"); // normal map
+        //loadMap("/random_map.txt"); // random map
     }
 
     // load images here

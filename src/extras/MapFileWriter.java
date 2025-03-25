@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
 
-public class FileWriter {
+public class MapFileWriter {
     
     public void writeFile() {
 
-        final int ROW_NUM = 50;
+        final int ROW_NUM = 500;
 
         try {
 
@@ -20,7 +20,7 @@ public class FileWriter {
             int j = 1;
             for(int i = 0; i < ROW_NUM * ROW_NUM; i++) {
 
-                if(j % 50 == 0) {
+                if(j % ROW_NUM == 0) {
                     writer.write(String.valueOf(j) + " \n");
                     j = 1;
                 }
@@ -41,7 +41,9 @@ public class FileWriter {
 
     public void writeRandomFile() {
 
-        final int ROW_NUM = 50;
+        // change these setting to produce different results
+        final int ROW_NUM = 500;
+        final int MAX_TILE_NUMBER = 5;
 
         try {
 
@@ -54,13 +56,13 @@ public class FileWriter {
 
             for(int i = 0; i < ROW_NUM * ROW_NUM; i++) {
 
-                if(j % 50 == 0) {
-                    writer.write(String.valueOf(random.nextInt(5)) + " \n");
+                if(j % ROW_NUM == 0) {
+                    writer.write(String.valueOf(random.nextInt(MAX_TILE_NUMBER)) + " \n");
                     j = 1;
                 }
                 
                 else {
-                    writer.write(String.valueOf(random.nextInt(5)) + " ");
+                    writer.write(String.valueOf(random.nextInt(MAX_TILE_NUMBER)) + " ");
                     j++;
                 }
                 
